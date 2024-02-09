@@ -3,7 +3,7 @@ class TicTacToe:
         self.winner = None
         self.full = False
         self.board = [[" " for _ in range(3)] for _ in range(3)]
-        self.current_player = "X"
+        self.player = "X"
 
     def board_full(self):
         for i in self.board:
@@ -14,15 +14,15 @@ class TicTacToe:
                     self.full = False
 
     def check_winner(self):
-        print("current " + self.current_player)
-        if (self.board[0][0] == self.board[0][1] == self.board[0][2] == self.current_player) or (
-                self.board[0][0] == self.board[1][1] == self.board[2][2] == self.current_player) or (
-                self.board[0][0] == self.board[1][0] == self.board[2][0] == self.current_player) or (
-                self.board[1][0] == self.board[1][1] == self.board[1][2] == self.current_player) or (
-                self.board[2][0] == self.board[2][1] == self.board[2][2] == self.current_player) or (
-                self.board[0][2] == self.board[1][2] == self.board[2][2] == self.current_player) or (
-                self.board[0][1] == self.board[1][1] == self.board[2][1] == self.current_player):
-            print(f'{self.current_player} wins!')
+        print("current " + self.player)
+        if (self.board[0][0] == self.board[0][1] == self.board[0][2] == self.player) or (
+                self.board[0][0] == self.board[1][1] == self.board[2][2] == self.player) or (
+                self.board[0][0] == self.board[1][0] == self.board[2][0] == self.player) or (
+                self.board[1][0] == self.board[1][1] == self.board[1][2] == self.player) or (
+                self.board[2][0] == self.board[2][1] == self.board[2][2] == self.player) or (
+                self.board[0][2] == self.board[1][2] == self.board[2][2] == self.player) or (
+                self.board[0][1] == self.board[1][1] == self.board[2][1] == self.player):
+            print(f'{self.player} wins!')
             self.print_board()
             self.winner = True
         else:
@@ -36,17 +36,17 @@ class TicTacToe:
             x = int(coordinates[0])
             y = int(coordinates[1])
             if self.board[x][y] == " ":
-                self.board[x][y] = self.current_player
+                self.board[x][y] = self.player
                 self.check_winner()
                 if self.winner:
                     break
                 elif self.full:
                     print('tie')
                     break
-                if self.current_player == "O":
-                    self.current_player = "X"
+                if self.player == "O":
+                    self.player = "X"
                 else:
-                    self.current_player = "O"
+                    self.player = "O"
             else:
                 print("unavailable coordinates, try again")
 
